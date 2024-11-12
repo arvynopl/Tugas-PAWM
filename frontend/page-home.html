@@ -1,0 +1,107 @@
+<script type="module">
+    import { checkAuth } from './js/auth.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        checkAuth();
+    });
+</script>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - TPLaB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="page-home.html">
+                    <img src="images/logo.png" alt="TPLaB Logo" width="100">
+                </a>
+            </div>
+            
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="page-home.html">Home</a></li>
+                <li><a href="page-home.html">Virtual Lab</a></li>
+                <li><button onclick="logout()" class="logout-button">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="lab-filter">
+            <h2 id="welcomeMessage"></h2>
+            <p class="lab-subtitle">Selamat belajar di lab virtual oleh TPLaB!</p>
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="labSearch" 
+                    class="search-bar" 
+                    placeholder="Cari lab"
+                    onkeyup="searchLabs()"
+                >
+            </div>
+        </div>
+
+        <div class="lab-grid">
+            <div class="lab-card" data-title="Persamaan Kuadrat" onclick="redirectToLab(this)">
+                <img src="images/graf.jpg" alt="Persamaan Kuadrat" class="lab-image">
+                <div class="lab-info">
+                    <h3>Persamaan Kuadrat</h3>
+                </div>
+            </div>
+
+            <div class="lab-card" data-title="Garis Bilangan" onclick="showAlert(this)">
+                <img src="images/cover.jpg" alt="Garis Bilangan" class="lab-image">
+                <div class="lab-info">
+                    <h3>Garis Bilangan</h3>
+                </div>
+            </div>
+    
+            <div class="lab-card" data-title="Penjumlahan Vektor" onclick="showAlert(this)">
+                <img src="images/cover.jpg" alt="Penjumlahan Vektor" class="lab-image">
+                <div class="lab-info">
+                    <h3>Penjumlahan Vektor</h3>
+                </div>
+            </div>
+    
+            <div class="lab-card" data-title="Pecahan Campuran" onclick="showAlert(this)">
+                <img src="images/cover.jpg" alt="Pecahan Campuran" class="lab-image">
+                <div class="lab-info">
+                    <h3>Pecahan Campuran</h3>
+                </div>
+            </div>
+    
+            <div class="lab-card" data-title="Persamaan Garis Lurus" onclick="showAlert(this)">
+                <img src="images/cover.jpg" alt="Persamaan Garis Lurus" class="lab-image">
+                <div class="lab-info">
+                    <h3>Persamaan Garis Lurus</h3>
+                </div>
+            </div>
+    
+            <div class="lab-card" data-title="Bangun Datar" onclick="showAlert(this)">
+                <img src="images/cover.jpg" alt="Bangun Datar" class="lab-image">
+                <div class="lab-info">
+                    <h3>Bangun Datar</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="index.html" style="color: white; text-decoration: none;">© 2024 Virtual Lab. All Rights Reserved.</a></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

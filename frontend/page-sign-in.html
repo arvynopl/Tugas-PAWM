@@ -1,0 +1,88 @@
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Check for error message in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        
+        if (error) {
+            alert(decodeURIComponent(error));
+        }
+    });
+</script>
+
+<script type="module">
+    import { handleLogin } from './js/auth.js';
+    
+    // Add event listener to form
+    document.getElementById('signInForm').addEventListener('submit', handleLogin);
+</script>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - TPLaB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="sign-in">
+        <div class="sign-in-box">
+            <h1>Selamat datang di TPLaB!</h1>
+            <p>Mohon lengkapi informasi akun sebelum melanjutkan</p>
+            
+            <form id="signInForm">
+                <div class="form-group">
+                    <label for="nim">NIM:</label>
+                    <input type="text" id="nim" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+
+                <button type="submit" class="cta-button">Masuk Sekarang</button>
+
+                <p class="form-footer">
+                    Belum punya akun? <a href="page-register.html">Daftar disini</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <script type="module">
+        document.getElementById('signInForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const nim = document.getElementById('nim').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('your-backend-url/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nim, password })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message);
+                }
+
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('nim', data.user.nim);
+                
+                // Redirect to home page
+                window.location.href = 'page-home.html';
+            } catch (error) {
+                alert(error.message || 'Login failed. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

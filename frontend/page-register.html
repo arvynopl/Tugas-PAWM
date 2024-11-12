@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TPLaB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="sign-in">
+        <form id="registerForm" class="sign-in-box">
+            <h1>Register TPLaB Account</h1>
+            
+            <div class="form-group">
+                <label for="nim">NIM:</label>
+                <input 
+                    type="text" 
+                    id="nim" 
+                    required 
+                    pattern="\d{8}"
+                    placeholder="Example: 18222007"
+                    title="Mohon masukkan NIM Anda"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="full_name">Full Name:</label>
+                <input 
+                    type="text" 
+                    id="full_name" 
+                    required
+                    placeholder="Nama lengkap Anda"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="email">ITB Email:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    required 
+                    pattern="[a-zA-Z0-9._%+-]+@itb\.ac\.id$"
+                    placeholder="example@itb.ac.id"
+                    title="Mohon gunakan alamat email ITB"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    required 
+                    minlength="8"
+                    placeholder="Minimal terdiri atas 8 karakter"
+                    title="Kata sandi harus terdiri dari minimal 8 karakter"
+                >
+            </div>
+            
+            <button type="submit" class="cta-button">Register</button>
+            
+            <p class="form-footer">
+                Already have an account? <a href="page-sign-in.html">Login here</a>
+            </p>
+        </form>
+    </main>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<script type="module">
+    import { checkAuth } from './js/auth.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        checkAuth();
+    });
+</script>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Lab - TPLaB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="page-home.html">
+                    <img src="images/logo.png" alt="TPLaB Logo" width="100">
+                </a>
+            </div>
+            
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="page-home.html">Home</a></li>
+                <li><a href="page-virtual-lab.html">Virtual Lab</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lab-content">
+        <h1 class="lab-title">Lab Virtual Persamaan Kuadrat</h1>
+
+        <div class="lab-container">
+            <div class="graph-section">
+                <div class="equation" id="equation-display">
+                    <span id="quadratic-equation">1x² + 0x + 0</span>
+                </div>
+                <canvas id="graphCanvas" width="600" height="400"></canvas>
+            </div>
+
+            <div class="controls-section">
+                <div class="control-group">
+                    <label for="a-slider">Koefisien a:</label>
+                    <input type="range" id="a-slider" min="-10" max="10" step="0.1" value="1" oninput="updateValues()">
+                    <input type="number" id="a-value" value="1" onchange="updateSlider('a')">
+                </div>
+
+                <div class="control-group">
+                    <label for="b-slider">Koefisien b:</label>
+                    <input type="range" id="b-slider" min="-10" max="10" step="0.1" value="0" oninput="updateValues()">
+                    <input type="number" id="b-value" value="0" onchange="updateSlider('b')">
+                </div>
+
+                <div class="control-group">
+                    <label for="c-slider">Koefisien c:</label>
+                    <input type="range" id="c-slider" min="-10" max="10" step="0.1" value="0" oninput="updateValues()">
+                    <input type="number" id="c-value" value="0" onchange="updateSlider('c')">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="index.html" style="color: white; text-decoration: none;">© 2024 Virtual Lab. All Rights Reserved.</a></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
